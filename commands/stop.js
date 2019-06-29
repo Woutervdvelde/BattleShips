@@ -25,8 +25,6 @@ module.exports = {
             gameGuild.playersReady = [];
             gameGuild.deletables = [];
             vars.games[id] = gameGuild;
-            console.log(vars.globalPlayers);
-            console.log(vars.games);
             return message.reply("Game successfully stopped");
         } else {
             return message.reply("There is no game to stop...?");
