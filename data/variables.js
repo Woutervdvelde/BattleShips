@@ -20,6 +20,8 @@ var globalChannels = {};
 const coordinatesY = ['dummy', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 const ships = [{name: 'Carrier', size: 5},{name: 'Battleship', size: 4},{name: 'Cruiser', size: 3},{name: 'Submarine', size: 3}, {name: 'Destroyer', size: 2}]
 
+const victoryGifs = ['https://tenor.com/3gD7.gif', 'https://tenor.com/s6bL.gif', 'https://tenor.com/s7QH.gif'];
+
 module.exports = {
     Discord,
     config,
@@ -43,4 +45,6 @@ module.exports = {
     globalChannels,
     coordinatesY,
     ships,
+
+    victoryGifs,
 }

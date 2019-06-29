@@ -81,14 +81,14 @@ async function gameMessage(message, players) {
             otherPlayer.canvas = response.canvas;
             let color = currentPlayer.playerObject === 'player1' ? 'blue' : 'red';
             let embed = functions.getGameMessage(color, currentPlayer.user.id, response.attachment);
-            gameGuild.deletables.forEach(item => {item ? item.delete() : null});
+            gameGuild.deletables.forEach(item => {item.deleted ? null : item.delete()});
             gameGuild.deletables = [];
             gameGuild.channels.game.send(embed).then(msg => gameGuild.deletables.push(msg))
 
             let endCheck = functions.checkPlayerFinished(otherPlayer);
 
             if (endCheck) {
-                gameGuild.channels.game.send(`<@${currentPlayer.user.id}> IS THE WINNER!`);
+                gameGuild.channels.game.send(`<@${currentPlayer.user.id}> IS THE WINNER!\n ${vars.victoryGifs[Math.floor(Math.random() * vars.victoryGifs.length)]}`);
                 setTimeout(() => {
                     let id = gameGuild.id;
                     gameGuild.player1.removeRole(gameGuild.player1.roles.find(role => role.name === 'bsPlayer1'));
@@ -113,13 +113,12 @@ async function gameMessage(message, players) {
                     currentPlayer.canvas = response.canvas;
                     let color = otherPlayer.playerObject === 'player1' ? 'blue' : 'red';
                     let embed = functions.getGameMessage(color, otherPlayer.user.id, response.attachment);
-                    gameGuild.deletables.forEach(item => {item ? item.delete() : null});
+                    gameGuild.deletables.forEach(item => {item.deleted ? null : item.delete()});
                     gameGuild.deletables = [];
                     gameGuild.channels.game.send(embed).then(msg => gameGuild.deletables.push(msg));
                     otherPlayer.turn = true;
                     otherPlayer.playerObject === 'player1' ? gameGuild.player1.turn = true : gameGuild.player2.turn = true;
-                    //set to 5000
-                }, 1000);
+                }, 5000);
             }
     }
 }

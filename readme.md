@@ -10,11 +10,11 @@ https://discordapp.com/api/oauth2/authorize?client_id=592695530258169869&permiss
 Feel free to clone this code. If you do, make sure to edit the `token` in `config.json`.
 
 ## Commands
-There is only one command you should know:
+There are only two command you should know:
 ```CSS
-!bs start
+!bs start: allows you to start a new game. If you join first, the bot will wait till he gets a second player.
+!bs stop: allows you to stop a game
 ```
-This allows you to start a new game. If you join first, the bot will wait till he gets a second player.
 
 ## The future
 BattleShips will probably get a few updates here and there in the future to make the exerience even more enjoyable
