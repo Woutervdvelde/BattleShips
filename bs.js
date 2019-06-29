@@ -25,7 +25,21 @@ client.on('ready', () => {
         vars.games[guild.id].deletables = [];
     });
     console.log('Ready!');
-    vars.client.user.setActivity(`with some boats`);
+    vars.client.user.setActivity(`with some boats in ${Object.keys(vars.games).length} servers`);
+});
+
+client.on("guildCreate", guild => {
+    vars.games[guild.id] = {};
+    vars.games[guild.id].id = guild.id;
+    vars.games[guild.id].gameState = false;
+    vars.games[guild.id].playersReady = [];
+    vars.games[guild.id].deletables = [];
+    vars.client.user.setActivity(`with some boats in ${Object.keys(vars.games).length} servers`);
+});
+
+client.on("guildDelete", guild => {
+    delete vars.games[guild.id];
+    vars.client.user.setActivity(`with some boats in ${Object.keys(vars.games).length} servers`);
 });
 
 client.on('message', message => {
